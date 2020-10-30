@@ -8,12 +8,14 @@ const knexInstance = knex({
 })
 
 ArticlesService.getAllArticles(knexInstance)
-  .then(articles => console.log(articles)).then(() =>
-    ArticlesService.insertArticle(knexInstance, {
+  .then(articles => console.log(articles))
+  .then(() => ArticlesService.insertArticle(knexInstance,
+    {
       title: 'New title',
       content: 'New content',
       date_published: new Date(),
-    }))
+    }
+  ))
   .then(newArticle => {
     console.log(newArticle)
     return ArticlesService.updateArticle(
